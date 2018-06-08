@@ -9,7 +9,6 @@
 - IIIF対応資料では、IIIFアイコンのクリックにより現在表示中のコマを外部IIIFビューワで開けるように変更
 
 [国立国会図書館デジタルコレクション]: http://dl.ndl.go.jp/
-[Firefox]: https://www.mozilla.org/firefox/
 [Greasemonkey]: https://addons.mozilla.org/firefox/addon/greasemonkey/
 [Violentmonkey]: https://addons.mozilla.org/firefox/addon/violentmonkey/
 
@@ -18,6 +17,7 @@
 1. このツールの利用には、ユーザスクリプトを動作させるためのブラウザ拡張機能（[Greasemonkey]、[Violentmonkey]など）のインストールが必要です。
     - [Greasemonkey]はバージョン3系列で動作を確認しています。
     - Firefox 57以降では、[Violentmonkey]で動作を確認しています。
+    - Google Chromeでは、 [Violentmonkey](https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)で動作を確認しています。
 2. ブラウザ拡張機能を初めてインストールした場合は、ブラウザを再起動してください。
 3. 以下のリンクをクリックすると、このユーザスクリプトのインストール確認が表示されます。
     - [ndldl_utils.user.js](https://github.com/2SC1815J/ndldl_utils/raw/master/ndldl_utils.user.js)
