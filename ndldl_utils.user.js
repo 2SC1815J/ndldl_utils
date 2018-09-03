@@ -2,13 +2,13 @@
 // @name        ndldl_utils
 // @description 国立国会図書館デジタルコレクション閲覧画面のカスタマイズ
 // @author      2SC1815J
-// @date        2018-06-07
+// @date        2018-09-03
 // @license     MIT License
 // @namespace   https://github.com/2SC1815J
 // @homepageURL https://github.com/2SC1815J/ndldl_utils
 // @include     http://dl.ndl.go.jp/info:ndljp/pid/*
 // @require     https://gist.githubusercontent.com/BrockA/2625891/raw/9c97aa67ff9c5d56be34a55ad6c18a314e5eb548/waitForKeyElements.js
-// @version     0.3
+// @version     0.3.1
 // ==/UserScript==
 
 // 従来
@@ -54,16 +54,17 @@
     $('#GlobalNaviArea').css({ 'padding-top': '10px', 'padding-bottom': '10px' });
 
     // タブやブックマークで識別しやすくするため、タイトルを「資料名 - サイト名」に変更する。
-    function fixTitle() {
-        var match = document.title.match(/(国立国会図書館デジタルコレクション) - (.+)/i);
-        if (match) {
-            document.title = match[2] + ' - ' + match[1];
-        }
-    }
+    // → その後（2018年夏）、サイト側出力が「資料名 - サイト名」形式に改められたのでコメントアウト
+    // function fixTitle() {
+    //     var match = document.title.match(/(国立国会図書館デジタルコレクション) - (.+)/i);
+    //     if (match) {
+    //         document.title = match[2] + ' - ' + match[1];
+    //     }
+    // }
 
-    var target = document.querySelector('head > title');
-    var observer = new MutationObserver(function(MutationRecords, MutationObserver) {
-        fixTitle();
+    function fixUI() {
+        // fixTitle();
+
         // ブラウザのアドレスバーを、現在表示中のコマのURLに更新する。
         var val = $('#sel-content-no').val();
         if (history.replaceState && history.state !== undefined && val) {
@@ -92,9 +93,11 @@
                     .append($('<a>').attr('href', manifestUrl).attr('target', '_blank').text(manifestUrl));
             }
         });
-    });
+    }
+    var target = document.querySelector('head > title');
+    var observer = new MutationObserver(fixUI);
     observer.observe(target, { subtree: true, characterData: true, childList: true });
 
-    fixTitle();
+    fixUI();
 
 })(jQuery);
