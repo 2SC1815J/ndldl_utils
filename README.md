@@ -7,6 +7,7 @@
 - タイトルを「サイト名 - 資料名」から「資料名 - サイト名」に変更
 - 2013年9月27日のレイアウト変更で使いにくくなったデザインを応急的に変更
 - IIIF対応資料では、IIIFアイコンのクリックにより現在表示中のコマを外部IIIFビューワで開けるように変更
+- ビューワ左右端の「＜」「＞」での移動方向を逆転
 
 [国立国会図書館デジタルコレクション]: http://dl.ndl.go.jp/
 [Greasemonkey]: https://addons.mozilla.org/firefox/addon/greasemonkey/
