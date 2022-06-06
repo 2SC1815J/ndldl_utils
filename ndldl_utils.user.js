@@ -2,13 +2,13 @@
 // @name        ndldl_utils
 // @description 国立国会図書館デジタルコレクション閲覧画面のカスタマイズ
 // @author      2SC1815J
-// @date        2018-10-01
+// @date        2022-06-06
 // @license     MIT License
 // @namespace   https://github.com/2SC1815J
 // @homepageURL https://github.com/2SC1815J/ndldl_utils
-// @include     http://dl.ndl.go.jp/info:ndljp/pid/*
+// @include     https://dl.ndl.go.jp/info:ndljp/pid/*
 // @require     https://gist.githubusercontent.com/BrockA/2625891/raw/9c97aa67ff9c5d56be34a55ad6c18a314e5eb548/waitForKeyElements.js
-// @version     0.4.0
+// @version     0.5.0
 // ==/UserScript==
 
 // 従来
@@ -71,9 +71,9 @@
         var val = $('#sel-content-no').val();
         if (history.replaceState && history.state !== undefined && val) {
             var url = location.protocol + '//' + location.host + location.pathname;
-            var match = url.match(/http:\/\/dl\.ndl\.go\.jp\/info:ndljp\/pid\/([0-9]+)(\/[0-9]+)?/i);
+            var match = url.match(/https:\/\/dl\.ndl\.go\.jp\/info:ndljp\/pid\/([0-9]+)(\/[0-9]+)?/i);
             if (match) {
-                var newUrl = 'http://dl.ndl.go.jp/info:ndljp/pid/' + match[1];
+                var newUrl = 'https://dl.ndl.go.jp/info:ndljp/pid/' + match[1];
                 if (val > 1) {
                     newUrl += '/' + val;
                 }
@@ -105,14 +105,15 @@
     // 2018年10月1日のデザイン変更により、コマ移動の「前」「次」ボタンがなくなり、
     // ビューワ左右端の「＜」「＞」ボタンにより前後のコマ移動を行うようになった。
     // 右開き資料の場合、やはり移動方向に違和感があるため、方向を入れ替える。
-    waitForKeyElements(
-        '#content-viewer',
-        function() {
-            $('#img-prevpage-container').css('right', '0').css('left', 'inherit');
-            $('#img-prevpage').css('background-image', 'url("http://dl.ndl.go.jp/resources/images/viewer_allow_next.png")');
-            $('#img-nextpage-container').css('left', '0').css('right', 'inherit');
-            $('#img-nextpage').css('background-image', 'url("http://dl.ndl.go.jp/resources/images/viewer_allow_prev.png")');
-        }
-    );
+    // → 2019年3月8日の変更でサイト側UIに「コマ送り方向反転ボタン」が追加されたため、コメントアウト
+    // waitForKeyElements(
+    //     '#content-viewer',
+    //     function() {
+    //         $('#img-prevpage-container').css('right', '0').css('left', 'inherit');
+    //         $('#img-prevpage').css('background-image', 'url("http://dl.ndl.go.jp/resources/images/viewer_allow_next.png")');
+    //         $('#img-nextpage-container').css('left', '0').css('right', 'inherit');
+    //         $('#img-nextpage').css('background-image', 'url("http://dl.ndl.go.jp/resources/images/viewer_allow_prev.png")');
+    //     }
+    // );
 
 })(jQuery);
